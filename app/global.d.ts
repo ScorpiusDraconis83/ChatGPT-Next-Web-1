@@ -19,11 +19,18 @@ declare interface Window {
     };
     fs: {
       writeBinaryFile(path: string, data: Uint8Array): Promise<void>;
+      writeTextFile(path: string, data: string): Promise<void>;
     };
-    notification:{
+    notification: {
       requestPermission(): Promise<Permission>;
       isPermissionGranted(): Promise<boolean>;
       sendNotification(options: string | Options): void;
+    };
+    http: {
+      fetch<T>(
+        url: string,
+        options?: Record<string, unknown>,
+      ): Promise<Response<T>>;
     };
   };
 }
